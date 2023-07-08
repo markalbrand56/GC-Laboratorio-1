@@ -22,4 +22,4 @@ void clear();
 void setCurrentColor(Color color);
 void setClearColor(Color color);
 void point(Vertex2 vertex);
-void renderBuffer();
+void renderBuffer(const char *filename);

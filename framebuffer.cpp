@@ -28,6 +28,6 @@ void point(Vertex2 vertex) {
     }
 }
 
-void renderBuffer() {
-    writeBMP("out.bmp");
+void renderBuffer(const char *filename) {
+    writeBMP(filename);
 }

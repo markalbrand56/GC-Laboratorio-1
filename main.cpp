@@ -21,5 +21,5 @@ void render() {
     Vertex2 point1 = { 400, 300 };
     point(point1);
 
-    renderBuffer();
+    renderBuffer("single_point.bmp");
 }
