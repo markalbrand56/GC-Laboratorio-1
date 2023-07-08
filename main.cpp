@@ -30,3 +30,34 @@ void render() {
     renderBuffer();
 }
 
+// lineas verticales rojas
+//void render() {
+//    Color black(0, 0, 0);
+//    Color white(255, 255, 255);
+//    Color red(255, 0, 0);
+//
+//    setClearColor(black);
+//    clear();
+//
+//    setCurrentColor(white);
+//
+//    // Dibujar un patrón de líneas diagonales rojas
+//    int tileSize = 50;
+//    for (int y = 0; y < SCREEN_HEIGHT; y += tileSize) {
+//        for (int x = 0; x < SCREEN_WIDTH; x += tileSize) {
+//            if ((x / tileSize + y / tileSize) % 2 == 0) {
+//                setCurrentColor(red);
+//            } else {
+//                setCurrentColor(white);
+//            }
+//
+//            for (int i = y; i < y + tileSize; ++i) {
+//                for (int j = x; j < x + tileSize; ++j) {
+//                    point(Vertex2{j, i});
+//                }
+//            }
+//        }
+//    }
+//
+//    renderBuffer();
+//}
