@@ -7,8 +7,8 @@ Color clearColor(0, 0, 0);
 Color currentColor(255, 255, 255);
 
 void clear() {
-    for (int i = 0; i < framebuffer.size(); ++i) {
-        framebuffer[i] = clearColor;
+    for (auto & i : framebuffer) {
+        i = clearColor;
     }
 }
 
