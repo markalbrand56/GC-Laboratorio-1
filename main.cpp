@@ -1,6 +1,6 @@
 #include "framebuffer.h"
 
-void render_point();
+void render_point(int x, int y);
 void render_line(Vertex2 start, Vertex2 end);
 void render_polygon(Vertex2* points, int numPoints);
 
@@ -17,7 +17,7 @@ int main() {
     setCurrentColor(white);
 
     // Dibujar un solo punto
-    render_point();
+    render_point(400,300);
     renderBuffer("point.bmp");
     clear();
 
@@ -40,9 +40,9 @@ int main() {
     return 0;
 }
 
-void render_point() {
+void render_point(int x, int y) {
     // Dibujar un solo punto
-    Vertex2 point1 = { 400, 300 };
+    Vertex2 point1 = { x, y };
     point(point1);
 }
 
