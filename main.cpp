@@ -23,6 +23,9 @@ void render() {
 
     renderBuffer("single_point.bmp");
 
+    // clear buffer
+    clear();
+
     // Dibujar una línea
     Vertex2 lineStart = { 100, 100 };
     Vertex2 lineEnd = { 700, 500 };
