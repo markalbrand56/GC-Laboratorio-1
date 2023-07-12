@@ -2,43 +2,36 @@
 
 int main() {
     // Colores
-    Color navyBlue(0, 0, 128);
     Color white(255, 255, 255);
-    Color red(255, 0, 0);
     Color black(0, 0, 0);
+    Color navyBlue(0, 0, 128);
+    Color red(255, 0, 0);
+    Color yellow(255, 255, 0);
 
-    // Color de fondo y limpiar el buffer
-    setClearColor(white);
     clear();
 
-    // Color de dibujo
+    setClearColor(white);
     setCurrentColor(navyBlue);
 
-    // Dibujar un solo punto
-    render_point(400, 300);
-    renderBuffer("point.bmp");
-    clear();
+    Polygon polygon1;
 
-    // Dibujar una línea
-    Vertex2 lineStart = { 100, 100 };
-    Vertex2 lineEnd = { 700, 500 };
+    // (165, 380) (185, 360) (180, 330) (207, 345) (233, 330) (230, 360) (250, 380) (220, 385) (205, 410) (193, 383)
+    //  debe ser amarillo con orilla blanca
 
-    render_line(lineStart, lineEnd);
-    renderBuffer("line.bmp");
-    clear();
+    polygon1.vertices.push_back({ 165, 380 });
+    polygon1.vertices.push_back({ 185, 360 });
+    polygon1.vertices.push_back({ 180, 330 });
+    polygon1.vertices.push_back({ 207, 345 });
+    polygon1.vertices.push_back({ 233, 330 });
+    polygon1.vertices.push_back({ 230, 360 });
+    polygon1.vertices.push_back({ 250, 380 });
+    polygon1.vertices.push_back({ 220, 385 });
+    polygon1.vertices.push_back({ 205, 410 });
+    polygon1.vertices.push_back({ 193, 383 });
+    polygon1.fillColor = yellow;
+    polygon1.borderColor = white;
 
-    // Dibujar un polígono con relleno y borde
-    Vertex2 polygonPoints[] = { {200, 200}, {300, 100}, {400, 200}, {300, 300} };
-    int numPoints = sizeof(polygonPoints) / sizeof(polygonPoints[0]);
-
-    Polygon polygon;
-    for (int i = 0; i < numPoints; i++) {
-        polygon.vertices.push_back(polygonPoints[i]);
-    }
-    polygon.fillColor = red;
-    polygon.borderColor = black;
-
-    drawPolygon(polygon, "filled_polygon.bmp");
+    drawPolygon(polygon1, "polygon1.bmp");
 
     return 0;
 }
