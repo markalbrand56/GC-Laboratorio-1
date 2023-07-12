@@ -12,6 +12,12 @@ struct Vertex2 {
     int x, y;
 };
 
+struct Polygon {
+    std::vector<Vertex2> vertices;
+    Color fillColor;
+    Color borderColor;
+};
+
 // Variables globales del framebuffer
 extern std::vector<Color> framebuffer;
 extern Color clearColor;
@@ -23,3 +29,9 @@ void setCurrentColor(Color color);
 void setClearColor(Color color);
 void point(Vertex2 vertex);
 void renderBuffer(const char *filename);
+
+// Funciones de dibujo
+void render_point(int x, int y);
+void render_line(Vertex2 start, Vertex2 end);
+void drawPolygon(const Polygon& polygon);
+void fillPolygon(const Polygon& polygon);
