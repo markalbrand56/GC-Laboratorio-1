@@ -33,5 +33,4 @@ void renderBuffer(const char *filename);
 // Funciones de dibujo
 void render_point(int x, int y);
 void render_line(Vertex2 start, Vertex2 end);
-void drawPolygon(const Polygon& polygon);
-void fillPolygon(const Polygon& polygon);
+void drawPolygon(const Polygon& polygon, const char *filename);

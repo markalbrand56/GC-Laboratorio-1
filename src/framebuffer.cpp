@@ -69,7 +69,7 @@ void render_line(Vertex2 start, Vertex2 end) {
     }
 }
 
-void drawPolygon(const Polygon& polygon) {
+void drawPolygon(const Polygon& polygon, const char *filename) {
     setCurrentColor(polygon.fillColor);
 
     int numVertices = static_cast<int>(polygon.vertices.size());
@@ -128,6 +128,6 @@ void drawPolygon(const Polygon& polygon) {
 
     render_line(polygon.vertices[numVertices - 1], polygon.vertices[0]);
 
-    renderBuffer("filled_polygon.bmp");
+    renderBuffer(filename);
     clear();
 }

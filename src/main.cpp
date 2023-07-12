@@ -38,7 +38,7 @@ int main() {
     polygon.fillColor = red;
     polygon.borderColor = black;
 
-    drawPolygon(polygon);
+    drawPolygon(polygon, "filled_polygon.bmp");
 
     return 0;
 }

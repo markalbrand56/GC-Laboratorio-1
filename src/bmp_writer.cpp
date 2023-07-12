@@ -6,7 +6,7 @@ void writeBMP(const std::string& filename) {
     int dataSize = SCREEN_WIDTH * SCREEN_HEIGHT * 3;
     int fileSize = 54 + dataSize;
 
-    std::ofstream file(filename, std::ios::binary);
+    std::ofstream file("../src/img/" + filename, std::ios::binary);
 
     // Header del archivo BMP
     file << "BM";
