@@ -26,9 +26,10 @@ void writeBMP(const std::string& filename) {
     file.write(reinterpret_cast<const char*>(&importantColors), 4);
 
     // Datos de píxeles
-    for (int y = SCREEN_HEIGHT - 1; y >= 0; --y) {
+    for (int y = 0; y < SCREEN_HEIGHT; ++y) {
         for (int x = 0; x < SCREEN_WIDTH; ++x) {
-            Color pixelColor = framebuffer[y * SCREEN_WIDTH + x];
+//            Color pixelColor = framebuffer[(SCREEN_HEIGHT - 1 - y) * SCREEN_WIDTH + x];  // Ajuste del índice y
+            Color pixelColor = framebuffer[y * SCREEN_WIDTH + x];  // Sin ajuste del índice y
             file.write(reinterpret_cast<const char*>(&pixelColor.b), 1);
             file.write(reinterpret_cast<const char*>(&pixelColor.g), 1);
             file.write(reinterpret_cast<const char*>(&pixelColor.r), 1);
