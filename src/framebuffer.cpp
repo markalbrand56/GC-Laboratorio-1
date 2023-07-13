@@ -69,65 +69,67 @@ void render_line(Vertex2 start, Vertex2 end) {
     }
 }
 
-void drawPolygon(const Polygon& polygon, const char *filename) {
-    setCurrentColor(polygon.fillColor);
+void drawPolygons(const std::vector<Polygon>& polygons, const char* filename) {
+    for (const Polygon& polygon : polygons) {
+        setCurrentColor(polygon.fillColor);
 
-    int numVertices = static_cast<int>(polygon.vertices.size());
-    if (numVertices < 3) {
-        return;
-    }
-
-    float yMin = SCREEN_HEIGHT;
-    float yMax = 0;
-
-    for (const Vertex2& vertex : polygon.vertices) {
-        if (vertex.y < yMin) {
-            yMin = vertex.y;
-        }
-        if (vertex.y > yMax) {
-            yMax = vertex.y;
-        }
-    }
-
-    for (int y = static_cast<int>(yMin); y <= yMax; y++) {
-        std::vector<float> intersections;
-
-        for (int i = 0; i < numVertices; i++) {
-            const Vertex2& currentVertex = polygon.vertices[i];
-            const Vertex2& nextVertex = polygon.vertices[(i + 1) % numVertices];
-
-            if ((currentVertex.y <= y && nextVertex.y > y) || (currentVertex.y > y && nextVertex.y <= y)) {
-                float intersectionX = currentVertex.x + (y - currentVertex.y) * (nextVertex.x - currentVertex.x) / (nextVertex.y - currentVertex.y);
-                intersections.push_back(intersectionX);
-            }
-        }
-
-        std::sort(intersections.begin(), intersections.end());
-
-        int numIntersections = static_cast<int>(intersections.size());
-        if (numIntersections < 2) {
+        int numVertices = static_cast<int>(polygon.vertices.size());
+        if (numVertices < 3) {
             continue;
         }
 
-        for (int i = 0; i < numIntersections - 1; i += 2) {
-            int startX = static_cast<int>(intersections[i]);
-            int endX = static_cast<int>(intersections[i + 1]);
+        float yMin = SCREEN_HEIGHT;
+        float yMax = 0;
 
-            for (int x = startX; x < endX; x++) {
-                point({ (x), (y) });
+        for (const Vertex2& vertex : polygon.vertices) {
+            if (vertex.y < yMin) {
+                yMin = vertex.y;
+            }
+            if (vertex.y > yMax) {
+                yMax = vertex.y;
             }
         }
+
+        for (int y = static_cast<int>(yMin); y <= yMax; y++) {
+            std::vector<float> intersections;
+
+            for (int i = 0; i < numVertices; i++) {
+                const Vertex2& currentVertex = polygon.vertices[i];
+                const Vertex2& nextVertex = polygon.vertices[(i + 1) % numVertices];
+
+                if ((currentVertex.y <= y && nextVertex.y > y) || (currentVertex.y > y && nextVertex.y <= y)) {
+                    float intersectionX = currentVertex.x + (y - currentVertex.y) * (nextVertex.x - currentVertex.x) / (nextVertex.y - currentVertex.y);
+                    intersections.push_back(intersectionX);
+                }
+            }
+
+            std::sort(intersections.begin(), intersections.end());
+
+            int numIntersections = static_cast<int>(intersections.size());
+            if (numIntersections < 2) {
+                continue;
+            }
+
+            for (int i = 0; i < numIntersections - 1; i += 2) {
+                int startX = static_cast<int>(intersections[i]);
+                int endX = static_cast<int>(intersections[i + 1]);
+
+                for (int x = startX; x < endX; x++) {
+                    point({ static_cast<float>(x), static_cast<float>(y) });
+                }
+            }
+        }
+
+        setCurrentColor(polygon.borderColor);
+
+        for (int i = 0; i < numVertices - 1; i++) {
+            render_line(polygon.vertices[i], polygon.vertices[i + 1]);
+        }
+
+        render_line(polygon.vertices[numVertices - 1], polygon.vertices[0]);
     }
-
-
-    setCurrentColor(polygon.borderColor);
-
-    for (int i = 0; i < numVertices - 1; i++) {
-        render_line(polygon.vertices[i], polygon.vertices[i + 1]);
-    }
-
-    render_line(polygon.vertices[numVertices - 1], polygon.vertices[0]);
 
     renderBuffer(filename);
     clear();
 }
+
