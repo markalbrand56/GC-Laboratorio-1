@@ -51,7 +51,21 @@ int main() {
 
     polygons.push_back(polygon2);
 
-    drawPolygons(polygons, "polygon2.bmp");
+
+    //(377, 249) (411, 197) (436, 249)
+    // Este debe ser rojo con orilla blanca.
+
+    Polygon polygon3;
+
+    polygon3.vertices.push_back({ 377, 249 });
+    polygon3.vertices.push_back({ 411, 197 });
+    polygon3.vertices.push_back({ 436, 249 });
+    polygon3.fillColor = red;
+    polygon3.borderColor = white;
+
+    polygons.push_back(polygon3);
+
+    drawPolygons(polygons, "polygon3.bmp");
 
     return 0;
 }
