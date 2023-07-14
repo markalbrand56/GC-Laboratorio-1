@@ -35,7 +35,25 @@ int main() {
 
     polygons.push_back(polygon1);
 
-    drawPolygons(polygons, "polygon1.bmp");
+//    drawPolygons(polygons, "polygon1.bmp");
+
+    // (321, 335) (288, 286) (339, 251) (374, 302)
+    //  Este debe ser azul con orilla blanca
+
+    Polygon polygon2;
+
+    polygon2.vertices.push_back({ 321, 335 });
+    polygon2.vertices.push_back({ 288, 286 });
+    polygon2.vertices.push_back({ 339, 251 });
+    polygon2.vertices.push_back({ 374, 302 });
+    polygon2.fillColor = navyBlue;
+    polygon2.borderColor = white;
+
+    polygons.push_back(polygon2);
+
+    drawPolygons(polygons, "polygon2.bmp");
+
+
 
     return 0;
 }
