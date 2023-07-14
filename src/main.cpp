@@ -53,7 +53,5 @@ int main() {
 
     drawPolygons(polygons, "polygon2.bmp");
 
-
-
     return 0;
 }
