@@ -65,7 +65,51 @@ int main() {
 
     polygons.push_back(polygon3);
 
-    drawPolygons(polygons, "polygon3.bmp");
+    // (413, 177) (448, 159) (502, 88) (553, 53) (535, 36) (676, 37) (660, 52)
+    //(750, 145) (761, 179) (672, 192) (659, 214) (615, 214) (632, 230) (580, 230)
+    //(597, 215) (552, 214) (517, 144) (466, 180)
+
+    // Este debe ser verde con orilla blanca
+
+    Polygon polygon4;
+
+    polygon4.vertices.push_back({ 413, 177 });
+    polygon4.vertices.push_back({ 448, 159 });
+    polygon4.vertices.push_back({ 502, 88 });
+    polygon4.vertices.push_back({ 553, 53 });
+    polygon4.vertices.push_back({ 535, 36 });
+    polygon4.vertices.push_back({ 676, 37 });
+    polygon4.vertices.push_back({ 660, 52 });
+    polygon4.vertices.push_back({ 750, 145 });
+    polygon4.vertices.push_back({ 761, 179 });
+    polygon4.vertices.push_back({ 672, 192 });
+    polygon4.vertices.push_back({ 659, 214 });
+    polygon4.vertices.push_back({ 615, 214 });
+    polygon4.vertices.push_back({ 632, 230 });
+    polygon4.vertices.push_back({ 580, 230 });
+    polygon4.vertices.push_back({ 597, 215 });
+    polygon4.vertices.push_back({ 552, 214 });
+    polygon4.vertices.push_back({ 517, 144 });
+    polygon4.vertices.push_back({ 466, 180 });
+    polygon4.fillColor = Color(0, 255, 0);
+    polygon4.borderColor = white;
+
+    polygons.push_back(polygon4);
+
+    // (682, 175) (708, 120) (735, 148) (739, 170)
+
+    Polygon polygon5;
+
+    polygon5.vertices.push_back({ 682, 175 });
+    polygon5.vertices.push_back({ 708, 120 });
+    polygon5.vertices.push_back({ 735, 148 });
+    polygon5.vertices.push_back({ 739, 170 });
+    polygon5.fillColor = black;
+    polygon5.borderColor = black;
+
+    polygons.push_back(polygon5);
+
+    drawPolygons(polygons, "polygon4.bmp");
 
     return 0;
 }
